@@ -38,7 +38,12 @@ namespace DSProject0.Model
 
 		public Service AddSubService(SubService subService)
 		{
-			SubServices.Add(subService);
+
+			if (!this.HasSubService(subService.Id))
+			{
+				SubServices.Add(subService);
+				subService.AddParrent(this);
+			}
 
 			return this;
 		}
@@ -66,8 +71,8 @@ namespace DSProject0.Model
 
 	class SubService : SuperService
 	{
-		private LinkedList<SubService> SubServices;
-		private LinkedList<SuperService> ParrentServices;
+		private List<SubService> SubServices;
+		private List<SuperService> ParrentServices;
 
 		public SubService(string name, int id) : base(name, id) { }
 
@@ -79,6 +84,13 @@ namespace DSProject0.Model
 				else if (item.HasDependency(id)) return true;
 			}
 			return false;
+		}
+
+		public SubService AddParrent(SuperService parrent)
+		{
+			ParrentServices.Add(parrent);
+
+			return this;
 		}
 	}
 }
