@@ -6,43 +6,79 @@ using System.Threading.Tasks;
 
 namespace DSProject0.Model
 {
-	class Service
+	abstract class SuperService
 	{
-		public string Name { get; }
+		public String Name { get; protected set; }
+		public int Id { get; protected set; }
+
+		public SuperService(string name, int id)
+		{
+			this.Name = name;
+			this.Id = id;
+		}
+
+		public abstract bool HasDependency(int id);
+	}
+
+	class Service : SuperService
+	{
 		public string CustomerDescription { get; }
 		public string TechnicalDescription { get; }
 		public string CarModel { get; }
 		public int Expence { get; }
-		public int Id{ get; }
 		private List<SubService> SubServices;
 
-		Service(string name, string cusDesc, string techDesc, string carModel, int expence, int id)
+		public Service(string name, string cusDesc, string techDesc, string carModel, int expence, int id) : base(name, id)
 		{
-			this.Name = name;
 			this.CustomerDescription = cusDesc;
 			this.TechnicalDescription = techDesc;
 			this.CarModel = carModel;
 			this.Expence = expence;
-			this.Id = id;
 		}
 
-		Service AddSubService(SubService subService)
+		public Service AddSubService(SubService subService)
 		{
 			SubServices.Add(subService);
 
 			return this;
 		}
 
-		//bool HasSubService(int id)
-		//{
-		//	SubServices.
-		//}
+		private bool HasSubService(int id)
+		{
+			foreach (SubService item in SubServices)
+			{
+				if (item.Id == id)
+					return true;
+			}
+			return false;
+		}
+
+		public override bool HasDependency(int id)
+		{
+			foreach (var item in SubServices)
+			{
+				if (item.Id == id) return true;
+				else if (item.HasDependency(id)) return true;
+			}
+			return false;
+		}
 	}
 
-	class SubService
+	class SubService : SuperService
 	{
-		public string Name { get; }
 		private LinkedList<SubService> SubServices;
-		private LinkedList<Service> ParrentServices;
+		private LinkedList<SuperService> ParrentServices;
+
+		public SubService(string name, int id) : base(name, id) { }
+
+		public override bool HasDependency(int id)
+		{
+			foreach (var item in SubServices)
+			{
+				if (item.Id == id) return true;
+				else if (item.HasDependency(id)) return true;
+			}
+			return false;
+		}
 	}
 }
