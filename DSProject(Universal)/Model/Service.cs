@@ -86,7 +86,7 @@ namespace DSProjectUniversal.Model
 				this.RemoveSubservice(item);
 			}
 
-			App.ServicePool.RemoveService
+			App.ServicePool.RemoveService(this);
 		}
 	}
 

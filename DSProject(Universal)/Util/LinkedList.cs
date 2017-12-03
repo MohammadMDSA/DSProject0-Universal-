@@ -5,18 +5,39 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Util
 {
+	/**
+	 * <summary>A Linked list structure to store data</summary>
+	 * */
 	public class LinkedList<T>
 	{
+		/**
+		 * <summary>Holds reference of first node of linked list(Always empty)</summary>
+		 * */
 		public Node<T> First { get; private set; }
+		/**
+		 * <summary>Holds reference of last node of linked list</summary>
+		 * */
 		public Node<T> Last { get; private set; }
+		/**
+		 * <summary>Number of nodes in linked list</summary>
+		 * */
 		public int Length { get; private set; }
 
+		/**
+		 * <summary>Sets value of length to 0 and initializes first node</summary>
+		 * */
 		public LinkedList()
 		{
 			this.Last = this.First = this.First = new Node<T>();
 			this.Length = 0;
 		}
 
+		/**
+		 * <summary>Adds a node to end of linked list</summary>
+		 * <param name="data">Data of the new node</param>
+		 * <returns>Reference to the very linked list</returns>
+		 * <remarks>Adds with O(1)</remarks>
+		 * */
 		public LinkedList<T> AddLast(T data)
 		{
 			var newNode = new Node<T>(data, this.Last);
@@ -27,6 +48,11 @@ namespace DSProjectUniversal.Util
 			return this;
 		}
 
+		/**
+		 * <summary>Removes the last node of lined list</summary>
+		 * <returns>Retunrs the very node functions deleted</returns>
+		 * <remarks>Removes with O(1)</remarks>
+		 * */
 		public Node<T> RemoveLast()
 		{
 			if (Length == 0) throw new Exception("Linked list is empty...");
@@ -36,7 +62,13 @@ namespace DSProjectUniversal.Util
 			this.Last.SetNext(null);
 			return temp;
 		}
-
+	
+		/**
+		 * <summary>Removes a node from linked list with specific data</summary>
+		 * <param name="data">Data of the node being removed</param>
+		 * <returns>Reference to the very linked list</returns>
+		 * <remarks>Removes with O(n)</remarks>
+		 * */
 		public LinkedList<T> RemoveElement(T data)
 		{
 			if (Length == 0) return this;
@@ -64,6 +96,11 @@ namespace DSProjectUniversal.Util
 			return this;
 		}
 
+		/**
+		 * <summary>Converts linked list to its node's array</summary>
+		 * <returns>An array of nodes of linked list</returns>
+		 * <remarks>Converts with O(n)</remarks>
+		 * */
 		public Node<T>[] ToNodeArray()
 		{
 			var index = 0;
@@ -76,7 +113,12 @@ namespace DSProjectUniversal.Util
 			}
 			return result;
 		}
-
+		
+		/**
+		 * <summary>Converts stored data to an array</summary>
+		 * <returns>An array of contained data</returns>
+		 * <remarks>Converts with O(n)</remarks>
+		 * */
 		public T[] ToArray()
 		{
 			var index = 0;
