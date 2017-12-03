@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Util
 {
-	class LinkedList<T>
+	public class LinkedList<T>
 	{
 		public Node<T> First { get; private set; }
 		public Node<T> Last { get; private set; }
@@ -29,6 +29,7 @@ namespace DSProjectUniversal.Util
 
 		public Node<T> RemoveLast()
 		{
+			if (Length == 0) throw new Exception("Linked list is empty...");
 			var temp = this.Last;
 			this.Last = this.Last.Previous;
 			this.Last.Next.SetPrevious(null);
@@ -38,6 +39,7 @@ namespace DSProjectUniversal.Util
 
 		public LinkedList<T> RemoveElement(T data)
 		{
+			if (Length == 0) return this;
 			Node<T> container = First;
 			bool found = false;
 			while(container.Next != null)
@@ -58,7 +60,7 @@ namespace DSProjectUniversal.Util
 				container.Next.SetPrevious(container.Previous);
 			container.SetPrevious(null);
 			container.SetPrevious(null);
-
+			Length--;
 			return this;
 		}
 
@@ -74,9 +76,22 @@ namespace DSProjectUniversal.Util
 			}
 			return result;
 		}
+
+		public T[] ToArray()
+		{
+			var index = 0;
+			var current = First;
+			var result = new T[this.Length];
+			while (current.Next != null)
+			{
+				result[index++] = current.Next.Data;
+				current = current.Next;
+			}
+			return result;
+		}
 	}
 
-	class Node<T>
+	public class Node<T>
 	{
 		public Node<T> Next { get; private set; }
 		public Node<T> Previous { get; private set; }

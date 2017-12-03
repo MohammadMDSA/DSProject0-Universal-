@@ -1,4 +1,5 @@
 ﻿using DSProject_Universal_.View;
+using DSProjectUniversal.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +8,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,6 +23,10 @@ namespace DSProject_Universal_
     /// </summary>
     sealed partial class App : Application
     {
+
+		public static ServicePool ServicePool { get; private set; }
+		public static SubServicePool SubServicePool { get; private set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -31,6 +35,8 @@ namespace DSProject_Universal_
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+			SubServicePool = new SubServicePool();
+			ServicePool = new ServicePool();
         }
 
         /// <summary>
