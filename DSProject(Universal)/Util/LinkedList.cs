@@ -3,19 +3,76 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSProject_Universal_.Util
+namespace DSProjectUniversal.Util
 {
 	class LinkedList<T>
 	{
-		private Node<T> First;
-		private Node<T> Last;
+		public Node<T> First { get; private set; }
+		public Node<T> Last { get; private set; }
 		public int Length { get; private set; }
 
 		public LinkedList()
 		{
-			this.Last = null;
-			this.First = new Node<T>();
+			this.Last = this.First = this.First = new Node<T>();
 			this.Length = 0;
+		}
+
+		public LinkedList<T> AddLast(T data)
+		{
+			var newNode = new Node<T>(data, this.Last);
+			Length++;
+			this.Last.SetNext(newNode);
+			this.Last = newNode;
+
+			return this;
+		}
+
+		public Node<T> RemoveLast()
+		{
+			var temp = this.Last;
+			this.Last = this.Last.Previous;
+			this.Last.Next.SetPrevious(null);
+			this.Last.SetNext(null);
+			return temp;
+		}
+
+		public LinkedList<T> RemoveElement(T data)
+		{
+			Node<T> container = First;
+			bool found = false;
+			while(container.Next != null)
+			{
+				if(container.Next.Data.Equals(data))
+				{
+					found = true;
+					container = container.Next;
+					break;
+				}
+				container = container.Next;
+
+			}
+			if (!found) return this;
+			if(container.Previous != null)
+				container.Previous.SetNext(container.Next);
+			if(container.Next != null)
+				container.Next.SetPrevious(container.Previous);
+			container.SetPrevious(null);
+			container.SetPrevious(null);
+
+			return this;
+		}
+
+		public Node<T>[] ToNodeArray()
+		{
+			var index = 0;
+			var current = First;
+			var result = new Node<T>[this.Length];
+			while(current.Next != null)
+			{
+				result[index++] = current.Next;
+				current = current.Next;
+			}
+			return result;
 		}
 	}
 

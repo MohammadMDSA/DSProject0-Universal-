@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSProject0.Model
+namespace DSProjectUniversal.Model
 {
 	abstract class SuperService
 	{
-		public String Name { get; protected set; }
+		public string Name { get; protected set; }
 		public int Id { get; protected set; }
 
 		public SuperService(string name, int id)
@@ -18,6 +18,7 @@ namespace DSProject0.Model
 		}
 
 		public abstract bool HasDependency(int id);
+
 	}
 
 	class Service : SuperService
