@@ -133,45 +133,84 @@ namespace DSProjectUniversal.Util
 		}
 	}
 
+	/**
+	 * <summary>Class of objects representing nodes of a linked list</summary>
+	 * */
 	public class Node<T>
 	{
+		/**
+		 * <summary>Pointer to next node in list</summary>
+		 * */
 		public Node<T> Next { get; private set; }
+		/**
+		 * <summary>Pointer to previous node in list</summary>
+		 * */
 		public Node<T> Previous { get; private set; }
+		/**
+		 * <summary>Data object of the node to store any kind of data</summary>
+		 * */
 		public T Data { get; private set; }
 
+		/**
+		 * <summary>Sets pointers to next and previous nodes in list to false</summary>
+		 * */
 		public Node()
 		{
 			this.Previous = null;
 			this.Next = null;
 		}
 
+		/**
+		 * <summary>Sets data of node to the given data</summary>
+		 * */
 		public Node(T data)
 		{
 			this.Data = data;
 		}
 
+		/**
+		 * <summary>Sets data and pointer to previous node of list to given values</summary>
+		 * */
 		public Node(T data, Node<T> previous) : this(data)
 		{
 			this.Previous = previous;
 		}
 
+		/**
+		 * <summary>Sets data and pointers to previous and next nodes on list to given values</summary>
+		 * */
 		public Node(T data, Node<T> previous, Node<T> next) : this(data, previous)
 		{
 			this.Next = next;
 		}
 
+		/**
+		 * <summary>Sets pointer to next node on list to given value</summary>
+		 * <param name="next">Reference to the node set to be pointer to next node on list</param>
+		 * <returns>Reference to the very node</returns>
+		 * */
 		public Node<T> SetNext(Node<T> next)
 		{
 			this.Next = next;
 			return this;
 		}
 
+		/**
+		 * <summary>Sets pointer to previious node on list to given value</summary>
+		 * <param name="previous">Reference to the node set to be pointer to previous node on list</param>
+		 * <returns>Reference to the very node</returns>
+		 * */
 		public Node<T> SetPrevious(Node<T> previous)
 		{
 			this.Previous = previous;
 			return this;
 		}
 
+		/**
+		 * <summary>Sets data of node to given value</summary>
+		 * <param name="data">The data we are setting node's data to</param>
+		 * <returns>Reference to the very node</returns>
+		 * */
 		public Node<T> SetData(T data)
 		{
 			this.Data = data;
