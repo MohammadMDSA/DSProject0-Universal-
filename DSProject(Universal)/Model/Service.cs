@@ -39,14 +39,36 @@ namespace DSProjectUniversal.Model
 
 	}
 
+	/**
+	 * <summary>A class represents active services for agencies</summary>
+	 * */
 	public class Service : SuperService
 	{
+		/**
+		 * <summary>Service description for customers</summary>
+		 * */
 		public string CustomerDescription { get; }
+		/**
+		 * <summary>Services' technical description</summary>
+		 * */
 		public string TechnicalDescription { get; }
+		/**
+		 * <summary>Car model for service</summary>
+		 * */
 		public string CarModel { get; }
+		/**
+		 * <summary>The expence of service for company</summary>
+		 * */
 		public int Expence { get; }
+		/**
+		 * <summary>List of subservices of service</summary>
+		 * <remarks>Uses Util.LinkedList</remarks>
+		 * */
 		public LinkedList<SubService> SubServices { get; private set; }
 
+		/**
+		 * <summary>Sets fields of class with constructor inputs</summary>
+		 * */
 		public Service(string name, string cusDesc, string techDesc, string carModel, int expence, int id) : base(name, id)
 		{
 			this.CustomerDescription = cusDesc;
@@ -56,6 +78,9 @@ namespace DSProjectUniversal.Model
 			this.SubServices = new LinkedList<SubService>();
 		}
 
+		/**
+		 * <summary></summary>
+		 * */
 		public Service AddSubService(SubService subService)
 		{
 
