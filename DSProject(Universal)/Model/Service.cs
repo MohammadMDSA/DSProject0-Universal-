@@ -7,17 +7,34 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Model
 {
+	/**
+	 * <summary>An abstract represents services and subservices</summary>
+	 * */
 	public abstract class SuperService
 	{
+		/**
+		 * <summary>Name of service or subservice</summary>
+		 * */
 		public string Name { get; protected set; }
+		/**
+		 * <summary>Unique ID for service or subservice</summary>
+		 * */
 		public int Id { get; protected set; }
 
+		/**
+		 * <summary>Initializes ID and Name of current service or subservice with given ID and Name</summary>
+		 * */
 		public SuperService(string name, int id)
 		{
 			this.Name = name;
 			this.Id = id;
 		}
 
+		/**
+		 * <summary>Checks service or subservice if it has a subservice in its subservices recursivly</summary>
+		 * <param name="id">ID of the subservice we are looking for</param>
+		 * <returns>Returns true if it has the subservice and return false otherwise</returns>
+		 * */
 		public abstract bool HasDependency(int id);
 
 	}
@@ -109,7 +126,7 @@ namespace DSProjectUniversal.Model
 
 		public SubService AddParrent(SuperService parrent)
 		{
-			ParrentServices.AddLast(parrent);
+			ParentServices.AddLast(parrent);
 
 			return this;
 		}

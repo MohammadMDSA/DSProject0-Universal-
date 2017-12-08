@@ -103,8 +103,12 @@
     <Compile Include="Model\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\LinkedList.cs" />
+    <Compile Include="Util\MaxHeap.cs" />
     <Compile Include="View\LinkedListTest.xaml.cs">
       <DependentUpon>LinkedListTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RootPage.xaml.cs">
+      <DependentUpon>RootPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +137,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LinkedListTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RootPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

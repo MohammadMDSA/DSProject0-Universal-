@@ -1,0 +1,66 @@
+\section{D\+S\+Project\+Universal.\+Model.\+Sub\+Service\+Pool Class Reference}
+\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool}\index{D\+S\+Project\+Universal.\+Model.\+Sub\+Service\+Pool@{D\+S\+Project\+Universal.\+Model.\+Sub\+Service\+Pool}}
+
+
+A place to store all active subservices 
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_aaf0770dba1193da180858c6a16f87750}} 
+\textbf{ Sub\+Service\+Pool} ()
+\begin{DoxyCompactList}\small\item\em Creates list object to store subservices\end{DoxyCompactList}\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_afe561c40615586058410baba5cbd7bf4}} 
+\textbf{ Sub\+Service\+Pool} \textbf{ Add\+Sub\+Service} (\textbf{ Sub\+Service} sub\+Service)
+\begin{DoxyCompactList}\small\item\em Add a sub service to active subservices list\end{DoxyCompactList}\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_a20888fbce0c4a9f79a576c6fb4963458}} 
+\textbf{ Sub\+Service\+Pool} \textbf{ Remove\+Sub\+Service} (\textbf{ Sub\+Service} sub\+Service)
+\begin{DoxyCompactList}\small\item\em Removes a subservice from active subservices list\end{DoxyCompactList}\item 
+\textbf{ Sub\+Service} \textbf{ Get\+Sub\+Service} (int id)
+\begin{DoxyCompactList}\small\item\em Finds a subservice by ID\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_ae840475ba448fe2381a45dd7950ab108}} 
+int \textbf{ Length} =$>$ List.\+Length
+\begin{DoxyCompactList}\small\item\em Returns number of active subservices\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_ae35d08a93e4077d6c841152cf7052d55}} 
+\textbf{ Linked\+List}$<$ \textbf{ Sub\+Service} $>$ \textbf{ List}
+\begin{DoxyCompactList}\small\item\em Stores Super\+Services\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A place to store all active subservices
+
+\subsection{Member Function Documentation}
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_sub_service_pool_a3aefcae44f633d1c959fe6bd388c2ab8}} 
+\index{D\+S\+Project\+Universal\+::\+Model\+::\+Sub\+Service\+Pool@{D\+S\+Project\+Universal\+::\+Model\+::\+Sub\+Service\+Pool}!Get\+Sub\+Service@{Get\+Sub\+Service}}
+\index{Get\+Sub\+Service@{Get\+Sub\+Service}!D\+S\+Project\+Universal\+::\+Model\+::\+Sub\+Service\+Pool@{D\+S\+Project\+Universal\+::\+Model\+::\+Sub\+Service\+Pool}}
+\subsubsection{Get\+Sub\+Service()}
+{\footnotesize\ttfamily \textbf{ Sub\+Service} D\+S\+Project\+Universal.\+Model.\+Sub\+Service\+Pool.\+Get\+Sub\+Service (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Finds a subservice by ID
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of subservice we are looking for\\
+\hline
+\end{DoxyParams}
+
+
+Finds with O(n)
+
+\begin{DoxyReturn}{Returns}
+The subservice with the given ID
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Sami/source/repos/\+D\+S\+Project(\+Universal)/\+D\+S\+Project(\+Universal)/\+Model/Pool.\+cs\end{DoxyCompactItemize}

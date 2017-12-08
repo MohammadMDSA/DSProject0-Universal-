@@ -1,0 +1,63 @@
+\section{D\+S\+Project\+Universal.\+Model.\+Super\+Service Class Reference}
+\label{class_d_s_project_universal_1_1_model_1_1_super_service}\index{D\+S\+Project\+Universal.\+Model.\+Super\+Service@{D\+S\+Project\+Universal.\+Model.\+Super\+Service}}
+
+
+An abstract represents services and subservices 
+
+
+Inheritance diagram for D\+S\+Project\+Universal.\+Model.\+Super\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_d_s_project_universal_1_1_model_1_1_super_service}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_super_service_ae1aeb419a7909af6ef52794e942491ec}} 
+\textbf{ Super\+Service} (string name, int id)
+\begin{DoxyCompactList}\small\item\em Initializes ID and Name of current service or subservice with given ID and Name\end{DoxyCompactList}\item 
+abstract bool \textbf{ Has\+Dependency} (int id)
+\begin{DoxyCompactList}\small\item\em Checks service or subservice if it has a subservice in its subservices recursivly\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_super_service_a6f5092cf434618ef420725ef3ebb9f2d}} 
+string \textbf{ Name}\hspace{0.3cm}{\ttfamily  [get, protected set]}
+\begin{DoxyCompactList}\small\item\em Name of service or subservice\end{DoxyCompactList}\item 
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_super_service_a9a83c7e9993881df0896428f0ba91faa}} 
+int \textbf{ Id}\hspace{0.3cm}{\ttfamily  [get, protected set]}
+\begin{DoxyCompactList}\small\item\em Unique ID for service or subservice\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract represents services and subservices
+
+\subsection{Member Function Documentation}
+\mbox{\label{class_d_s_project_universal_1_1_model_1_1_super_service_a617b1309bed57798f76a71eac6ec6e11}} 
+\index{D\+S\+Project\+Universal\+::\+Model\+::\+Super\+Service@{D\+S\+Project\+Universal\+::\+Model\+::\+Super\+Service}!Has\+Dependency@{Has\+Dependency}}
+\index{Has\+Dependency@{Has\+Dependency}!D\+S\+Project\+Universal\+::\+Model\+::\+Super\+Service@{D\+S\+Project\+Universal\+::\+Model\+::\+Super\+Service}}
+\subsubsection{Has\+Dependency()}
+{\footnotesize\ttfamily abstract bool D\+S\+Project\+Universal.\+Model.\+Super\+Service.\+Has\+Dependency (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks service or subservice if it has a subservice in its subservices recursivly
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the subservice we are looking for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if it has the subservice and return false otherwise
+\end{DoxyReturn}
+
+
+Implemented in \textbf{ D\+S\+Project\+Universal.\+Model.\+Sub\+Service} \doxyref{}{p.}{class_d_s_project_universal_1_1_model_1_1_sub_service_adae90aa35f26ca0ce8ff4ed6439b890e}, and \textbf{ D\+S\+Project\+Universal.\+Model.\+Service} \doxyref{}{p.}{class_d_s_project_universal_1_1_model_1_1_service_af4c682317779dba6e27be35d50f236c9}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Sami/source/repos/\+D\+S\+Project(\+Universal)/\+D\+S\+Project(\+Universal)/\+Model/Service.\+cs\end{DoxyCompactItemize}
