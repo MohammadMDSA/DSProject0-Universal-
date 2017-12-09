@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Navigation;
 using DSProjectUniversal.Util;
 using System.Threading.Tasks;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DSProjectUniversal.View
 {
