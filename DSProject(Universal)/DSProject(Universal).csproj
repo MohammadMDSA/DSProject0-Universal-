@@ -7,7 +7,7 @@
     <ProjectGuid>{0A6A0C0B-23B4-47C9-B3B2-6A1569ADFC53}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DSProject_Universal_</RootNamespace>
+    <RootNamespace>DSProjectUniversal</RootNamespace>
     <AssemblyName>DSProject(Universal)</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>

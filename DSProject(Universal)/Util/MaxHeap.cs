@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSProject_Universal_.Util
+namespace DSProjectUniversal.Util
 {
 	class MaxHeap<T> where T : IComparable
 	{

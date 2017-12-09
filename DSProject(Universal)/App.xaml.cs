@@ -1,4 +1,4 @@
-﻿using DSProject_Universal_.View;
+﻿using DSProjectUniversal.View;
 using DSProjectUniversal.Model;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace DSProject_Universal_
+namespace DSProjectUniversal
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
