@@ -202,6 +202,8 @@ namespace DSProjectUniversal.Model
 
 		/**
 		 * <summary>Calls base constructor to set ID and name</summary>
+		 * <param name="id">ID of new subservice</param>
+		 * <param name="name">Name of new subservice</param>
 		 * */
 		public SubService(string name, int id) : base(name, id, false) { }
 
