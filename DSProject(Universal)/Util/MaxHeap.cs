@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Util
 {
+	/**
+	 * 
+	 * */
 	class MaxHeap<T> where T : IComparable
 	{
 		public T[] HeapArray;
@@ -28,7 +31,7 @@ namespace DSProjectUniversal.Util
 
 			int index = Size + 1;
 			HeapArray[index] = obj;
-			while(hasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+			while(HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
 			{
 				T temp = HeapArray[index];
 				HeapArray[index] = HeapArray[index / 2];
@@ -39,7 +42,7 @@ namespace DSProjectUniversal.Util
 			return true;
 		}
 
-		public bool remove(T obj)
+		public bool Remove(T obj)
 		{
 			if (Size == 0) return false;
 			int index = 1;
@@ -61,7 +64,7 @@ namespace DSProjectUniversal.Util
 
 			while (true)
 			{
-				if (hasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+				if (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
 				{
 					T temp = HeapArray[index];
 					HeapArray[index] = HeapArray[index / 2];
@@ -73,14 +76,14 @@ namespace DSProjectUniversal.Util
 				{
 					bool hasRight = false;
 					bool bad = false;
-					if (hasLeftChild(index))
+					if (HasLeftChild(index))
 					{
 						if (HeapArray[index].CompareTo(HeapArray[2 * index]) < 0)
 						{
 							bad = true;
 						}
 					}
-					if (hasRightChild(index))
+					if (HasRightChild(index))
 					{
 						hasRight = true;
 						if (HeapArray[index].CompareTo(HeapArray[2 * index + 1]) < 0)
@@ -108,25 +111,45 @@ namespace DSProjectUniversal.Util
 			}
 		}
 
-		private bool hasParent(int index)
+		private bool HasParent(int index)
 		{
 			if (index == 1) return false;
 			if (HeapArray[index / 2] == null) return false;
 			return true;
 		}
 
-		private bool hasLeftChild(int index)
+		private bool HasLeftChild(int index)
 		{
 			if (index * 2 > Size) return false;
 			if (HeapArray[index * 2] == null) return false;
 			return true;
 		}
 
-		private bool hasRightChild(int index)
+		private bool HasRightChild(int index)
 		{
 			if (index * 2 + 1 > Size) return false;
 			if (HeapArray[index * 2] == null) return false;
 			return true;
+		}
+
+		public T RemoveFirst()
+		{
+			T result = HeapArray[1];
+			bool remResult = this.Remove(result);
+			if (!remResult) return default(T);
+			return result;
+		}
+
+		public bool HasElement(T element)
+		{
+			foreach (var item in HeapArray)
+			{
+				if(element.Equals(item))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }

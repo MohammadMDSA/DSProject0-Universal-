@@ -12,6 +12,13 @@ namespace DSProjectUniversal.Model
 	 * */
 	public abstract class SuperService
 	{
+
+		/**
+		 * <summary>Number of parents</summary>
+		 * <remarks>Uses Util.LinkedList</remarks>
+		 * */
+		protected int ParentServices;
+
 		/**
 		 * <summary>Name of service or subservice</summary>
 		 * */
@@ -30,7 +37,12 @@ namespace DSProjectUniversal.Model
 		 * <summary>List of subservices of service or subservice</summary>
 		 * <remarks>Uses Util.LinkedList</remarks>
 		 * */
-		public LinkedList<SubService> SubServices { get; protected set; }
+		private LinkedList<SubService> _SubServices;
+
+		/**
+		 * <summary>A getter for superservice subservices and conerts linkedlist to array to avoid dara manipulation</summary>
+		 * */
+		public SubService[] SubServices { get => _SubServices.ToArray(); }
 
 		/**
 		 * <summary>Initializes ID and Name of current service or subservice with given ID and Name</summary>
@@ -40,15 +52,111 @@ namespace DSProjectUniversal.Model
 			this.Name = name;
 			this.Id = id;
 			this.IsService = isService;
+			ParentServices = 0;
+			_SubServices = new LinkedList<SubService>();
 		}
 
 		/**
-		 * <summary>Checks service or subservice if it has a subservice in its subservices recursivly</summary>
-		 * <param name="id">ID of the subservice we are looking for</param>
-		 * <returns>Returns true if it has the subservice and return false otherwise</returns>
+		 * <summary>Removes a subservice/service from parents' list</summary>
+		 * <returns>A reference to the very subservice</returns>
+		 * <remarks>Removes with O(n)</remarks>
 		 * */
-		public abstract bool HasDependency(int id);
+		public SuperService RemoveParent()
+		{
+			ParentServices--;
+			if (ParentServices == 0)
+			{
+				foreach (var item in _SubServices.ToArray())
+				{
+					item.RemoveParent();
+				}
+				App.SubServicePool.RemoveSubService(this);
+			}
 
+			return this;
+		}
+
+		/**
+		 * <summary>Adds 1 to parents' count</summary>
+		 * <returns>A reference to the very subservice</returns>
+		 * <remarks>Adds with O(1)</remarks>
+		 * */
+		public SuperService AddParent()
+		{
+			ParentServices++;
+
+			return this;
+		}
+
+		/**
+		 * <summary>Checks if subservice with given ID is in dependency subservices</summary>
+		 * <param name="id">ID of sebservice we are searching for</param>
+		 * <returns>Returns result of the search</returns>
+		 * <remarks>
+		 * Checks its own subservices, then checks all of its dependency tree for subservice with given id
+		 * Search whit O(n) where O is number of all subservices
+		 * </remarks>
+		 * */
+		public bool HasDependency(int id)
+		{
+			foreach (var item in _SubServices.ToArray())
+			{
+				if (item.Id == id) return true;
+			}
+			foreach (var item in _SubServices.ToArray())
+			{
+				if (item.HasDependency(id)) return true;
+			}
+			return false;
+		}
+
+		/**
+		 * <summary>Adds a subservice to the superservice</summary>
+		 * <remarks>First check if service doesn't have the subserve, then adds to service's subservices</remarks>
+		 * <param name="subService">Adds given subserivce to service's subservices list</param>
+		 * <returns>A reference to the very service</returns>
+		 * <remarks>Searchs with O(n) and Adds with O(1)</remarks>
+		 * */
+		public SuperService AddSubService(SubService subService)
+		{
+
+			if (!this.HasSubService(subService.Id))
+			{
+				_SubServices.AddLast(subService);
+				subService.AddParent();
+			}
+
+			return this;
+		}
+
+		/**
+		 * <summary>Checks superservice subservices to see if it already has the given subservice</summary>
+		 * <param name="id">ID of the subservice we are searching for</param>
+		 * <returns>Result of the searching</returns>
+		 * <remarks>Checks with O(n)</remarks>
+		 * */
+		private bool HasSubService(int id)
+		{
+			foreach (var item in _SubServices.ToArray())
+			{
+				if (item.Id == id)
+					return true;
+			}
+			return false;
+		}
+
+		/**
+		 * <summary>Removes a subservice from service's subservices' list</summary>
+		 * <param name="subService">The subservice we are adding to service's subservices's list</param>
+		 * <returns>A reference to the very service</returns>
+		 * <remarks>Removes with O(n)</remarks>
+		 * */
+		public SuperService RemoveSubservice(SubService subService)
+		{
+			_SubServices.RemoveElement(subService);
+			subService.RemoveParent();
+			return this;
+		}
 	}
 
 	/**
@@ -72,7 +180,7 @@ namespace DSProjectUniversal.Model
 		 * <summary>The expence of service for company</summary>
 		 * */
 		public int Expence { get; }
-		
+
 		/**
 		 * <summary>Sets fields of class with constructor inputs</summary>
 		 * */
@@ -82,84 +190,8 @@ namespace DSProjectUniversal.Model
 			this.TechnicalDescription = techDesc;
 			this.CarModel = carModel;
 			this.Expence = expence;
-			this.SubServices = new LinkedList<SubService>();
 		}
 
-		/**
-		 * <summary>Adds a subservice to the service</summary>
-		 * <remarks>First check if service doesn't have the subserve, then adds to service's subservices</remarks>
-		 * <param name="subService">Adds given subserivce to service's subservices list</param>
-		 * <returns>A reference to the very service</returns>
-		 * <remarks>Adds with O(1)</remarks>
-		 * */
-		public Service AddSubService(SubService subService)
-		{
-
-			if (!this.HasSubService(subService.Id))
-			{
-				SubServices.AddLast(subService);
-				subService.AddParrent(this);
-			}
-
-			return this;
-		}
-		/**
-		 * <summary>Checks service subservices to see if it already has the given subservice</summary>
-		 * <param name="id">ID of the subservice we are searching for</param>
-		 * <returns>Result of the searching</returns>
-		 * <remarks>Checks with O(n)</remarks>
-		 * */
-		private bool HasSubService(int id)
-		{
-			foreach (var item in SubServices.ToArray())
-			{
-				if (item.Id == id)
-					return true;
-			}
-			return false;
-		}
-
-		/**
-		 * <summary>Checks service's dependency tree it see if has the subservice with given ID</summary>
-		 * <param name="id">ID of subservice we are are searching for</param>
-		 * <returns>Result of the serarching</returns>
-		 * <remarks>Checks with O(n) where n is number of all subservices</remarks>
-		 * */
-		public override bool HasDependency(int id)
-		{
-			foreach (var item in SubServices.ToArray())
-			{
-				if (item.Id == id) return true;
-				else if (item.HasDependency(id)) return true;
-			}
-			return false;
-		}
-
-		/**
-		 * <summary>Removes a subservice from service's subservices' list</summary>
-		 * <param name="subService">The subservice we are adding to service's subservices's list</param>
-		 * <returns>A reference to the very service</returns>
-		 * <remarks>Removes with O(n)</remarks>
-		 * */
-		public Service RemoveSubservice(SubService subService)
-		{
-			SubServices.RemoveElement(subService);
-			subService.RomoveParent(this);
-			return this;
-		}
-
-		/**
-		 * <summary>Deletes service and tell all its subservices to remove this service frome their parents list</summary>
-		 * */
-		public void Delete()
-		{
-			foreach (var item in SubServices.ToArray())
-			{
-				this.RemoveSubservice(item);
-			}
-
-			App.ServicePool.RemoveService(this);
-		}
 	}
 
 	/**
@@ -167,67 +199,11 @@ namespace DSProjectUniversal.Model
 	 * */
 	public class SubService : SuperService
 	{
-		/**
-		 * <summary>A list of SuperServices to store parents of the subservice</summary>
-		 * <remarks>Uses Util.LinkedList</remarks>
-		 * */
-		private LinkedList<SuperService> ParentServices;
 
 		/**
 		 * <summary>Calls base constructor to set ID and name</summary>
 		 * */
 		public SubService(string name, int id) : base(name, id, false) { }
 
-		/**
-		 * <summary>Checks if subservice with given ID is in dependency subservices</summary>
-		 * <param name="id">ID of sebservice we are searching for</param>
-		 * <returns>Returns result of the search</returns>
-		 * <remarks>Checks its own subservices, then checks all of its dependency tree for subservice with given id</remarks>
-		 * */
-		public override bool HasDependency(int id)
-		{
-			foreach (var item in SubServices.ToArray())
-			{
-				if (item.Id == id) return true;
-			}
-			foreach (var item in SubServices.ToArray())
-			{
-				if (item.HasDependency(id)) return true;
-			}
-			return false;
-		}
-
-		/**
-		 * <summary>Adds a subservice or service as it's parent in its parents' list</summary>
-		 * <returns>A reference to the very subservice</returns>
-		 * <remarks>Adds with O(1)</remarks>
-		 * */
-		public SubService AddParrent(SuperService parrent)
-		{
-			ParentServices.AddLast(parrent);
-
-			return this;
-		}
-
-		/**
-		 * <summary>Removes a subservice/service from parents' list</summary>
-		 * <param name="parent">The super service being removed from parents</param>
-		 * <returns>A reference to the very subservice</returns>
-		 * <remarks>Removes with O(n)</remarks>
-		 * */
-		public SubService RomoveParent(SuperService parent)
-		{
-			ParentServices.RemoveElement(parent);
-			if (ParentServices.Length == 0)
-			{
-				foreach (var item in SubServices.ToArray())
-				{
-					item.RomoveParent(this);
-				}
-				App.SubServicePool.RemoveSubService(this);
-			}
-
-			return this;
-		}
 	}
 }

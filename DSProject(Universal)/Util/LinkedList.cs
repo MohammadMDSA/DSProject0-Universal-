@@ -66,12 +66,12 @@ namespace DSProjectUniversal.Util
 		/**
 		 * <summary>Removes a node from linked list with specific data</summary>
 		 * <param name="data">Data of the node being removed</param>
-		 * <returns>Reference to the very linked list</returns>
+		 * <returns>Result of removing</returns>
 		 * <remarks>Removes with O(n)</remarks>
 		 * */
-		public LinkedList<T> RemoveElement(T data)
+		public bool RemoveElement(T data)
 		{
-			if (Length == 0) return this;
+			if (Length == 0) return false;
 			Node<T> container = First;
 			bool found = false;
 			while(container.Next != null)
@@ -85,7 +85,7 @@ namespace DSProjectUniversal.Util
 				container = container.Next;
 
 			}
-			if (!found) return this;
+			if (!found) return false;
 			if(container.Previous != null)
 				container.Previous.SetNext(container.Next);
 			if(container.Next != null)
@@ -93,7 +93,7 @@ namespace DSProjectUniversal.Util
 			container.SetPrevious(null);
 			container.SetPrevious(null);
 			Length--;
-			return this;
+			return false;
 		}
 
 		/**
@@ -130,6 +130,23 @@ namespace DSProjectUniversal.Util
 				current = current.Next;
 			}
 			return result;
+		}
+
+		/**
+		 * <summary>Check linkedlist for a specific object</summary>
+		 * <param name="element">Element we are searching for in linkedlist</param>
+		 * <returns>Result of searching</returns>
+		 * <remarks>Search with O(n)</remarks>
+		 * */
+		public bool HasElement(T element)
+		{
+			Node<T> current = First;
+			while(current.Next != null)
+			{
+				if (current.Next.Data.Equals(element)) return true;
+				current = current.Next;
+			}
+			return false;
 		}
 	}
 
