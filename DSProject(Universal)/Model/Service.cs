@@ -22,19 +22,25 @@ namespace DSProjectUniversal.Model
 		public int Id { get; protected set; }
 
 		/**
-		 * <summary>Initializes ID and Name of current service or subservice with given ID and Name</summary>
+		 * <summary>To deferentiate service from subserice</summary>
 		 * */
-		public SuperService(string name, int id)
-		{
-			this.Name = name;
-			this.Id = id;
-		}
 
+		public bool IsService { get; }
 		/**
 		 * <summary>List of subservices of service or subservice</summary>
 		 * <remarks>Uses Util.LinkedList</remarks>
 		 * */
 		public LinkedList<SubService> SubServices { get; protected set; }
+
+		/**
+		 * <summary>Initializes ID and Name of current service or subservice with given ID and Name</summary>
+		 * */
+		public SuperService(string name, int id, bool isService)
+		{
+			this.Name = name;
+			this.Id = id;
+			this.IsService = isService;
+		}
 
 		/**
 		 * <summary>Checks service or subservice if it has a subservice in its subservices recursivly</summary>
@@ -70,7 +76,7 @@ namespace DSProjectUniversal.Model
 		/**
 		 * <summary>Sets fields of class with constructor inputs</summary>
 		 * */
-		public Service(string name, string cusDesc, string techDesc, string carModel, int expence, int id) : base(name, id)
+		public Service(string name, string cusDesc, string techDesc, string carModel, int expence, int id) : base(name, id, true)
 		{
 			this.CustomerDescription = cusDesc;
 			this.TechnicalDescription = techDesc;
@@ -170,7 +176,7 @@ namespace DSProjectUniversal.Model
 		/**
 		 * <summary>Calls base constructor to set ID and name</summary>
 		 * */
-		public SubService(string name, int id) : base(name, id) { }
+		public SubService(string name, int id) : base(name, id, false) { }
 
 		/**
 		 * <summary>Checks if subservice with given ID is in dependency subservices</summary>

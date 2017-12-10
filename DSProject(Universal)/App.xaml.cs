@@ -24,7 +24,7 @@ namespace DSProjectUniversal
     sealed partial class App : Application
     {
 
-		public static ServicePool ServicePool { get; private set; }
+		public static SuperServicePool SuperServicePool { get; private set; }
 		public static SubServicePool SubServicePool { get; private set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace DSProjectUniversal
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 			SubServicePool = new SubServicePool();
-			ServicePool = new ServicePool();
+			ServicePool = new SuperServicePool();
         }
 
         /// <summary>
