@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Model
 {
-	class Order : IComparable
+	public class Order : IComparable
 	{
 		public int CompareTo(object obj)
 		{

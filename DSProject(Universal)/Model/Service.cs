@@ -70,7 +70,7 @@ namespace DSProjectUniversal.Model
 				{
 					item.RemoveParent();
 				}
-				App.SubServicePool.RemoveSubService(this);
+				//App.SuperServicePool.RemoveSuperService(this);
 			}
 
 			return this;

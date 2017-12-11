@@ -1,0 +1,26 @@
+﻿<Page
+	x:Name="RootPage"
+    x:Class="DSProjectUniversal.View.ListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:comp="using:DSProjectUniversal.View.Component"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+	<Page.Resources>
+		<Style x:Key="ListSuperStyle" TargetType="ListBox">
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="Margin" Value="10,10,0,0"/>
+		</Style>
+	</Page.Resources>
+
+	<StackPanel>
+		<VariableSizedWrapGrid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" ItemWidth="100" Height="50" VerticalAlignment="Top"  HorizontalChildrenAlignment="Left" MaximumRowsOrColumns="3" Orientation="Horizontal">
+			<ListBox Style="{StaticResource ListSuperStyle}" VariableSizedWrapGrid.ColumnSpan="1" VariableSizedWrapGrid.RowSpan="2"/>
+			<ListBox Style="{StaticResource ListSuperStyle}" VariableSizedWrapGrid.ColumnSpan="1" VariableSizedWrapGrid.RowSpan="2"/>
+			<ListBox Style="{StaticResource ListSuperStyle}" VariableSizedWrapGrid.ColumnSpan="1" VariableSizedWrapGrid.RowSpan="2"/>
+		</VariableSizedWrapGrid>
+		<comp:SubserviceTree  x:Name="tree" Background="Black"/>
+	</StackPanel>
+</Page>

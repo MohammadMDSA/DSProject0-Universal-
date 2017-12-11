@@ -24,9 +24,6 @@ namespace DSProjectUniversal
     sealed partial class App : Application
     {
 
-		public static SuperServicePool SuperServicePool { get; private set; }
-		public static SubServicePool SubServicePool { get; private set; }
-
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,8 +32,6 @@ namespace DSProjectUniversal
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-			SubServicePool = new SubServicePool();
-			ServicePool = new SuperServicePool();
         }
 
         /// <summary>
@@ -73,7 +68,7 @@ namespace DSProjectUniversal
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(RootPage), e.Arguments);
+                    rootFrame.Navigate(typeof(ListPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

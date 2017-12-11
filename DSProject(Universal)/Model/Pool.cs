@@ -14,11 +14,18 @@ namespace DSProjectUniversal.Model
 		/**
 		 * <summary>Stores SuperServices</summary>
 		 * */
-		private LinkedList<SuperService> List;
+		private LinkedList<SuperService> _List;
+
+		/**
+		 * <summary>Getter for list of super services</summary>
+		 * <remarks>Retunrs an array to avoid manipulation</remarks>
+		 * */
+		public SuperService[] List { get => _List.ToArray(); }
+
 		/**
 		 * <summary>Return number of active services</summary>
 		 * */
-		public int Length => List.Length;
+		public int Length => _List.Length;
 
 
 		/**
@@ -26,7 +33,7 @@ namespace DSProjectUniversal.Model
 		 * */
 		public SuperServicePool()
 		{
-			List = new LinkedList<SuperService>();
+			_List = new LinkedList<SuperService>();
 		}
 
 		/**
@@ -37,7 +44,7 @@ namespace DSProjectUniversal.Model
 		 * */
 		public SuperServicePool AddSuperService(SuperService service)
 		{
-			List.AddLast(service);
+			_List.AddLast(service);
 			return this;
 		}
 
@@ -48,7 +55,7 @@ namespace DSProjectUniversal.Model
 		 * */
 		public SuperServicePool RemoveSuperService(SuperService service)
 		{
-			List.RemoveElement(service);
+			_List.RemoveElement(service);
 			return this;
 		}
 
@@ -60,7 +67,7 @@ namespace DSProjectUniversal.Model
 		 * */
 		public SuperService GetSuperService(int id)
 		{
-			var temp = List.ToArray();
+			var temp = _List.ToArray();
 			foreach (var item in temp)
 			{
 				if (item.Id == id)

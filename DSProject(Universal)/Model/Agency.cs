@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Model
 {
-	class Agency
+	public class Agency
 	{
 		/**
 		 * <summary>A priority queue storeing orders with their immidiacy</summary>
@@ -81,7 +81,6 @@ namespace DSProjectUniversal.Model
 		 * */
 		public bool AddOrder(Order order)
 		{
-
 			if (_OrdersList.HasElement(order)) return false;
 			return _OrdersList.Add(order);
 		}
