@@ -9,9 +9,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-	<StackPanel Orientation="Vertical">
-		<Button HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="Button_Click">
-			<StackPanel Orientation="Horizontal">
+	<StackPanel x:Name="parentStack" Orientation="Vertical">
+		<Button HorizontalAlignment="Left" Width="{x:Bind parentStack.Width}" VerticalAlignment="Stretch" Click="Button_Click">
+			<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
 				<FontIcon x:Name="arrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;"/>
 				<TextBlock Text="{x:Bind _Service.Name}"/>
 			</StackPanel>

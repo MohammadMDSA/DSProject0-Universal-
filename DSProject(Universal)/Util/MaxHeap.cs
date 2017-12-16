@@ -44,14 +44,14 @@ namespace DSProjectUniversal.Util
 		 * */
 		public bool Add(T obj)
 		{
-			if(this.Size == MaxSize)
+			if (this.Size == MaxSize)
 			{
 				return false;
 			}
 
 			int index = Size + 1;
 			HeapArray[index] = obj;
-			while(HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+			while (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
 			{
 				T temp = HeapArray[index];
 				HeapArray[index] = HeapArray[index / 2];
@@ -88,17 +88,20 @@ namespace DSProjectUniversal.Util
 			HeapArray[Size] = default(T);
 			Size--;
 
-			while (true)
+			if (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
 			{
-				if (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+				while (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
 				{
 					T temp = HeapArray[index];
 					HeapArray[index] = HeapArray[index / 2];
 					HeapArray[index / 2] = temp;
 					index = index / 2;
-					continue;
 				}
-				else
+				return true;
+			}
+			else
+			{
+				while (true)
 				{
 					bool hasRight = false;
 					bool bad = false;
@@ -136,6 +139,7 @@ namespace DSProjectUniversal.Util
 				}
 			}
 		}
+
 
 		/**
 		 * <summary>Determines if a node has parent or not</summary>
@@ -199,7 +203,7 @@ namespace DSProjectUniversal.Util
 		{
 			foreach (var item in HeapArray)
 			{
-				if(element.Equals(item))
+				if (element.Equals(item))
 				{
 					return true;
 				}

@@ -15,7 +15,7 @@
 			<ListBox.ItemTemplate>
 				<DataTemplate x:DataType="local2:SuperService">
 					<StackPanel Orientation="Vertical">
-						<local:SubserviceTreeItem Margin="20,0,0,0" Service="{x:Bind}"/>
+						<local:SubserviceTreeItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,0,0,0" Service="{x:Bind}"/>
 					</StackPanel>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
