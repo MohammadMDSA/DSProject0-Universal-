@@ -19,7 +19,7 @@
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<StackPanel x:Name="ServiceStack" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+			<StackPanel x:Name="ServiceStack" Margin="10" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
 				<ItemsControl x:Name="ServicesList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
@@ -29,6 +29,7 @@
 									<ColumnDefinition Width="*"/>
 									<ColumnDefinition Width="*"/>
 								</Grid.ColumnDefinitions>
+								<TextBlock Text="{Binding Path=Name}"/>
 								<Button HorizontalAlignment="Stretch" Grid.Column="1" Content="Details" Click="ServiceList_Click"/>
 								<Button HorizontalAlignment="Stretch" Grid.Column="2" Content="Delete" Click="RemoveService_Click"/>
 							</Grid>
@@ -45,7 +46,7 @@
 				<Button Content="Create Service" HorizontalAlignment="Center" Margin="20" Click="CreateServiceBtn"/>
 			</StackPanel>
 
-			<StackPanel x:Name="AgencyStack" Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
+			<StackPanel x:Name="AgencyStack" Margin="10" Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
 				<ItemsControl x:Name="AgenciesList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>

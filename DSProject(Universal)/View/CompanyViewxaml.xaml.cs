@@ -113,10 +113,12 @@ namespace DSProjectUniversal.View
 				return;
 			}
 
-			Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-			{
-				ServiceNameInput.Background = new SolidColorBrush(Colors.White);
-			});
+			ServiceNameInput.Text = string.Empty;
+			CusDescInput.Text = string.Empty;
+			TechDescInput.Text = string.Empty;
+			CarModelInput.Text = string.Empty;
+			ExpenceInput.Text = string.Empty;
+
 			var services = new List<Service>();
 			foreach (var item in Company.SuperServicePool)
 			{
@@ -141,19 +143,25 @@ namespace DSProjectUniversal.View
 			ServicesList.ItemsSource = services;
 		}
 
-		private void CreateAgencyBtn(object sender, RoutedEventArgs e)
+		private async void CreateAgencyBtn(object sender, RoutedEventArgs e)
 		{
 			Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
 			{
 				AgencyNameInput.Background = new SolidColorBrush(Colors.White);
 			});
+
 			if (AgencyNameInput.Text == string.Empty || !Company.AddAgency(AgencyNameInput.Text))
 			{
-				Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+				await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
 				{
 					AgencyNameInput.Background = new SolidColorBrush(Colors.Red);
 				});
+				return;
 			}
+
+			AgencyNameInput.Text = string.Empty;
+
+			AgenciesList.ItemsSource = Company.Agencies;
 		}
 	}
 }
