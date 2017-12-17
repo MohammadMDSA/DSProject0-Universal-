@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DSProjectUniversal.Model
 {
+	/**
+	 * <summary>Class to represent each agency of the company</summary>
+	 * */
 	public class Agency
 	{
 		/**
@@ -77,7 +80,7 @@ namespace DSProjectUniversal.Model
 		 * <summary>Adds order to orders list</summary>
 		 * <param name="order">The order being added to orders lsit</param>
 		 * <returns>Result of adding</returns>
-		 * <remarks>Adds with O(1)</remarks>
+		 * <remarks>Searchs with O(n) and adds with O(1)</remarks>
 		 * */
 		public bool AddOrder(Order order)
 		{

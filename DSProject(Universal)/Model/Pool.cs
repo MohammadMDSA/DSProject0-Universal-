@@ -53,10 +53,9 @@ namespace DSProjectUniversal.Model
 		 * <param name="service">The service/subservice to be removed from pool</param>
 		 * <returns>A reference to the very superpool</returns>
 		 * */
-		public SuperServicePool RemoveSuperService(SuperService service)
+		public bool RemoveSuperService(SuperService service)
 		{
-			_List.RemoveElement(service);
-			return this;
+			return _List.RemoveElement(service);
 		}
 
 		/**

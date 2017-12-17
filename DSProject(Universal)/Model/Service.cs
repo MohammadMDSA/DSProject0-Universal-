@@ -1,5 +1,6 @@
 ﻿using DSProjectUniversal;
 using DSProjectUniversal.Util;
+using DSProjectUniversal.View;
 using System;
 using System.Linq;
 using System.Text;
@@ -70,7 +71,7 @@ namespace DSProjectUniversal.Model
 				{
 					item.RemoveParent();
 				}
-				//App.SuperServicePool.RemoveSuperService(this);
+				CompanyViewxaml.Company.RemoveService(this.Id);
 			}
 
 			return this;

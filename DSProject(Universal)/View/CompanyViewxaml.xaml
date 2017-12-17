@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="DSProjectUniversal.View.CompanyViewxaml"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DSProjectUniversal.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:model="using:DSProjectUniversal.Model"
+    mc:Ignorable="d">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="8*"/>
+		</Grid.RowDefinitions>
+		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" Grid.Row="0" Margin="0,0,0,10">Company</TextBlock>
+		<Grid Grid.Row="1" Margin="0,20,0,20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<StackPanel x:Name="ServiceStack" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+				<ItemsControl x:Name="ServicesList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="5*"/>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Button HorizontalAlignment="Stretch" Grid.Column="1" Content="Details" Click="ServiceList_Click"/>
+								<Button HorizontalAlignment="Stretch" Grid.Column="2" Content="Delete" Click="RemoveService_Click"/>
+							</Grid>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+					<TextBox Margin="10" x:Name="ServiceNameInput" PlaceholderText="Name"/>
+					<TextBox Margin="10" x:Name="CarModelInput" PlaceholderText="Car Model"/>
+					<TextBox Margin="10" x:Name="CusDescInput" PlaceholderText="Customer Instructions"/>
+					<TextBox Margin="10" x:Name="TechDescInput" PlaceholderText="Technical Instructions"/>
+					<TextBox Margin="10" x:Name="ExpenceInput" PlaceholderText="Expences"/>
+				</StackPanel>
+				<Button Content="Create Service" HorizontalAlignment="Center" Margin="20" Click="CreateServiceBtn"/>
+			</StackPanel>
+
+			<StackPanel x:Name="AgencyStack" Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
+				<ItemsControl x:Name="AgenciesList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button HorizontalAlignment="Stretch" Content="{Binding Path=AgencyName}" Click="AgencyList_Click" Width="{Binding AgencyStack.Width}"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+					<TextBox Margin="10" x:Name="AgencyNameInput" PlaceholderText="Name"/>
+				</StackPanel>
+				<Button Content="Create Service" HorizontalAlignment="Center" Margin="20" Click="CreateAgencyBtn"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Page>

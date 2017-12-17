@@ -60,6 +60,7 @@ namespace DSProjectUniversal.Util
 			this.Last = this.Last.Previous;
 			this.Last.Next.SetPrevious(null);
 			this.Last.SetNext(null);
+			Length--;
 			return temp;
 		}
 	
@@ -88,10 +89,12 @@ namespace DSProjectUniversal.Util
 			if (!found) return false;
 			if(container.Previous != null)
 				container.Previous.SetNext(container.Next);
-			if(container.Next != null)
+			if (container.Next != null)
 				container.Next.SetPrevious(container.Previous);
+			else
+				Last = container.Previous;
 			container.SetPrevious(null);
-			container.SetPrevious(null);
+			container.SetNext(null);
 			Length--;
 			return false;
 		}

@@ -10,7 +10,7 @@ namespace DSProjectUniversal.Util
 	 * <summary>Maxheap data structure to store data</summary>
 	 * <remarks>Use to create prioritu queue</remarks>
 	 * */
-	class MaxHeap<T> where T : IComparable
+	class MaxHeap<T> where T : IComparable<T>
 	{
 		/**
 		 * <summary>An array to store heap data</summary>
