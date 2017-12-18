@@ -41,12 +41,20 @@ namespace DSProjectUniversal.View
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			CurrentAgency = e.Parameter as Agency;
-			CurrentAgency.AddService(new Service("dsfdsf", "", "", "", 123, 12323));
 			TitleTxt.Text = CurrentAgency.AgencyName;
 			Orders.ItemsSource = CurrentAgency.Orders;
 			OrderPriorityInput.ItemsSource = priorities;
 			ServiceInput.ItemsSource = CurrentAgency.Services;
 			AgencyServices.ItemsSource = CurrentAgency.Services;
+
+			var Services = new List<Service>();
+			foreach (var item in CompanyViewxaml.Company.SuperServicePool)
+			{
+				if (item.IsService)
+					Services.Add(item as Service);
+			}
+
+			AllServicesInput.ItemsSource = Services;
 		}
 
 		private void Order_Click(object sender, RoutedEventArgs e)
@@ -129,6 +137,27 @@ namespace DSProjectUniversal.View
 		private void RemoveService_Click(object sender, RoutedEventArgs e)
 		{
 			CurrentAgency.RemoveService((sender as Button).DataContext as Service);
+			AgencyServices.ItemsSource = CurrentAgency.Services;
+			ServiceInput.ItemsSource = CurrentAgency.Services;
+		}
+
+		private async void AddService_Clicke(object sender, RoutedEventArgs e)
+		{
+			await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+			{
+				AllServicesInput.Background = new SolidColorBrush(Colors.White);
+			});
+
+			if (AllServicesInput.SelectedIndex < 0 || !CurrentAgency.AddService(AllServicesInput.SelectedItem as Service))
+			{
+				await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+				{
+					AllServicesInput.Background = new SolidColorBrush(Colors.Red);
+				});
+				return;
+			}
+
+			ServiceInput.ItemsSource = CurrentAgency.Services;
 			AgencyServices.ItemsSource = CurrentAgency.Services;
 		}
 	}

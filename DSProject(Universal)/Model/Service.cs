@@ -49,8 +49,7 @@ namespace DSProjectUniversal.Model
 		 * <summary>Initializes ID and Name of current service or subservice with given ID and Name</summary>
 		 * */
 		public SuperService(string name, int id, bool isService)
-		{
-			this.Name = name;
+		{			this.Name = name;
 			this.Id = id;
 			this.IsService = isService;
 			ParentServices = 0;

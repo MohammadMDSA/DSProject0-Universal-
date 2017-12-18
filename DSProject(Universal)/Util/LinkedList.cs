@@ -87,7 +87,6 @@ namespace DSProjectUniversal.Util
 
 			}
 			if (!found) return false;
-			if(container.Previous != null)
 				container.Previous.SetNext(container.Next);
 			if (container.Next != null)
 				container.Next.SetPrevious(container.Previous);
@@ -96,7 +95,7 @@ namespace DSProjectUniversal.Util
 			container.SetPrevious(null);
 			container.SetNext(null);
 			Length--;
-			return false;
+			return true;
 		}
 
 		/**

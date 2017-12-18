@@ -30,55 +30,7 @@ namespace DSProjectUniversal.View
 		public CompanyViewxaml()
 		{
 			this.InitializeComponent();
-			CompanyViewxaml.Company = new Company();
-			var SW1 = new Service("name111", "", "", "", 10, 5);
-			var SW2 = new Service("name122", "", "", "", 10, 4);
-			var SW3 = new Service("name133", "", "", "", 10, 3);
-			var Su1 = new SubService("subservice", 19920);
-			var Su2 = new SubService("subservice1", 1920);
-			var Su4 = new SubService("subservice3", 192);
-			var Su3 = new SubService("subservice2", 9920);
-			Su1.AddSubService(Su2);
-			SW1.AddSubService(Su3);
-			SW1.AddSubService(Su1);
-			SW2.AddSubService(Su4);
-			var s = new Service[5]{
-				SW1,
-				SW2,
-				SW3,
-				new Service("name1", "", "", "", 10, 2),
-				new Service("name1", "", "", "", 10, 1)
-			};
-			Company.AddService("name1", "", "", "", 10);
-			Company.AddService("name2", "", "", "", 10);
-			Company.AddService("name3", "", "", "", 10);
-			Company.AddService("name4", "", "", "", 10);
-			Company.AddService("name5", "", "", "", 10);
-
-			Company.AddAgency("Agency1");
-			Company.AddAgency("Agency2");
-			Company.AddAgency("Agency3");
-			Company.AddAgency("Agency4");
-
-
-
-			var Ss1 = new Service("nameww4", "", "", "", 10, 5);
-			var Ss2 = new Service("nameww3", "", "", "", 10, 4);
-			var Ss3 = new Service("nameww2", "", "", "", 10, 3);
-			var Ssu1 = new SubService("subservice", 19920);
-			var Ssu2 = new SubService("subservice1", 1920);
-			var Ssu4 = new SubService("subservice3", 192);
-			var Ssu3 = new SubService("subservice2", 9920);
-			Su1.AddSubService(Su2);
-			SW1.AddSubService(Su3);
-			SW1.AddSubService(Su1);
-			SW2.AddSubService(Su4);
-			Company.AddService(Ss1);
-			Company.AddService(Ss2);
-			Company.AddService(Ss3);
-			Company.AddService(SW1);
-			Company.AddService(SW2);
-			Company.AddService(SW3);
+			
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -182,6 +134,11 @@ namespace DSProjectUniversal.View
 			AgencyNameInput.Text = string.Empty;
 
 			AgenciesList.ItemsSource = Company.Agencies;
+		}
+
+		private void AddSubService_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(AddSubserviceView));
 		}
 	}
 }

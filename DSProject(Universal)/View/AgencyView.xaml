@@ -19,6 +19,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<StackPanel Margin="10" Orientation="Vertical" Grid.Column="0">
+				<TextBlock Text="Orders" HorizontalAlignment="Center" FontSize="30"/>
 				<ItemsControl x:Name="Orders">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
@@ -48,6 +49,7 @@
 				<Button Margin="10" Content="Remove First" HorizontalAlignment="Center" Click="RemoveOrder_Click"/>
 			</StackPanel>
 			<StackPanel Margin="10" Orientation="Vertical" Grid.Column="1">
+				<TextBlock Text="Services" HorizontalAlignment="Center" FontSize="30"/>
 				<ItemsControl x:Name="AgencyServices">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
@@ -58,12 +60,23 @@
 									<ColumnDefinition Width="*"/>
 								</Grid.ColumnDefinitions>
 								<TextBlock Text="{Binding Path=Name}" Grid.Column="0"/>
-								<Button Content="Detail" Grid.Column="1" Click="Service_Click"/>
-								<Button Content="Remove" Grid.Column="2" Click="RemoveService_Click"/>
+								<Button Content="Detail" HorizontalAlignment="Stretch" Grid.Column="1" Click="Service_Click"/>
+								<Button Content="Remove" HorizontalAlignment="Stretch" Grid.Column="2" Click="RemoveService_Click"/>
 							</Grid>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
+				<MenuFlyoutSeparator/>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<ComboBox Margin="10" x:Name="AllServicesInput" PlaceholderText="Service">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Path=Name}"/>
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
+					<Button Margin="10" Content="Add Service" Click="AddService_Clicke"/>
+				</StackPanel>
 			</StackPanel>
 		</Grid>
 	</Grid>

@@ -58,11 +58,11 @@ namespace DSProjectUniversal.Model
 			return true;
 		}
 
-		public bool AddService(Service service)
+		public bool AddService(SuperService service)
 		{
 			foreach (var item in _SuperServicePool.List)
 			{
-				if (item.Name == service.Name && item.IsService) return false;
+				if (item.Name == service.Name) return false;
 			}
 			_SuperServicePool.AddSuperService(service);
 			return true;
@@ -72,7 +72,7 @@ namespace DSProjectUniversal.Model
 		{
 			foreach (var item in _SuperServicePool.List)
 			{
-				if(item.Id == id && item.IsService)
+				if(item.Id == id)
 				{
 					return _SuperServicePool.RemoveSuperService(item);
 				}

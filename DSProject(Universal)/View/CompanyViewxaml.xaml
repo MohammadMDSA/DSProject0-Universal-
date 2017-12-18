@@ -67,8 +67,8 @@
 			</Grid>
 			<MenuFlyoutSeparator Grid.Row="1"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Button Content="Add Sub-service" Margin="10" HorizontalAlignment="Center"/>
-				<Button Content="All Services/Subservices"/>
+				<Button Content="Add Sub-service" Margin="10" HorizontalAlignment="Center" Click="AddSubService_Click"/>
+				<Button Content="All Services/Subservices" />
 			</StackPanel>
 		</StackPanel>
 	</Grid>
