@@ -113,6 +113,9 @@
     <Compile Include="View\AgencyView.xaml.cs">
       <DependentUpon>AgencyView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AllServicesView.xaml.cs">
+      <DependentUpon>AllServicesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyViewxaml.xaml.cs">
       <DependentUpon>CompanyViewxaml.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
     <Page Include="View\AgencyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AllServicesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\CompanyViewxaml.xaml">
       <SubType>Designer</SubType>

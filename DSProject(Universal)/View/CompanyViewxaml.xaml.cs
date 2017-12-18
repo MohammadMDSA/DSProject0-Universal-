@@ -140,5 +140,10 @@ namespace DSProjectUniversal.View
 		{
 			this.Frame.Navigate(typeof(AddSubserviceView));
 		}
+		
+		private void AllServices_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(AllServicesView));
+		}
 	}
 }

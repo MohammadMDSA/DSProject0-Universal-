@@ -117,16 +117,18 @@ namespace DSProjectUniversal.Model
 		 * <returns>A reference to the very service</returns>
 		 * <remarks>Searchs with O(n) and Adds with O(1)</remarks>
 		 * */
-		public SuperService AddSubService(SubService subService)
+		public bool AddSubService(SubService subService)
 		{
 
 			if (!this.HasSubService(subService.Id))
 			{
 				_SubServices.AddLast(subService);
 				subService.AddParent();
+				return true;
 			}
+			else
+				return false;
 
-			return this;
 		}
 
 		/**

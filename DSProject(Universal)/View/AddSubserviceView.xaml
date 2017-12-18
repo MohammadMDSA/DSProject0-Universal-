@@ -9,11 +9,10 @@
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="111*"/>
-			<RowDefinition Height="761*"/>
-			<RowDefinition Height="128*"/>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="8*"/>
 		</Grid.RowDefinitions>
-		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" Grid.Row="0" Margin="463,-3,462,7">Add Sub-service</TextBlock>
+		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" Grid.Row="0">Add Sub-service</TextBlock>
 		<StackPanel Grid.Row="1" Orientation="Vertical">
 			<Grid VerticalAlignment="Center" Margin="10,328,10,200">
 				<Grid.ColumnDefinitions>
@@ -44,7 +43,7 @@
 					</ComboBox>
 				</StackPanel>
 			</Grid>
-			<Button Content="Add Sub-service" HorizontalAlignment="Center" Grid.Row="1" Click="AddSubservice_Click"/>
+			<Button Content="Add Sub-service" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Click="AddSubservice_Click"/>
 		</StackPanel>
 	</Grid>
 </Page>
