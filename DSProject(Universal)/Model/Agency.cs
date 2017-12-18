@@ -45,6 +45,8 @@ namespace DSProjectUniversal.Model
 		public Agency(string name)
 		{
 			this.AgencyName = name;
+			_OrdersList = new MaxHeap<Order>(100);
+			_Services = new LinkedList<Service>();
 		}
 
 		/**

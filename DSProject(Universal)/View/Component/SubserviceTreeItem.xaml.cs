@@ -14,7 +14,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace DSProjectUniversal.View.Component
 {
@@ -32,7 +31,7 @@ namespace DSProjectUniversal.View.Component
 				list.ItemSource = _Service.SubServices;
 			}
 		}
-		public object ItemSource { get => list.ItemSource; set => list.ItemSource = value; }
+		public object ItemSource { get => list.ItemSource; private set => list.ItemSource = value; }
 
 		public SubserviceTreeItem()
 		{

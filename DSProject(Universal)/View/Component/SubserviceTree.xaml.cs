@@ -34,10 +34,5 @@ namespace DSProjectUniversal.View.Component
 		{
 			this.InitializeComponent();
 		}
-
-		private void list_LostFocus(object sender, RoutedEventArgs e)
-		{
-			list.SelectedIndex = -1;
-		}
 	}
 }

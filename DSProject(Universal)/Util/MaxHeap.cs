@@ -15,7 +15,23 @@ namespace DSProjectUniversal.Util
 		/**
 		 * <summary>An array to store heap data</summary>
 		 * */
-		public T[] HeapArray;
+		private T[] _HeapArray;
+
+		/**
+		 * <summary>Getter for implementation array to avoid manipulation</summary>
+		 * */
+		public T[] HeapArray
+		{
+			get
+			{
+				T[] result = new T[Size];
+				for (int i = 1; i <= Size; i++)
+				{
+					result[i - 1] = _HeapArray[i];
+				}
+				return result;
+			}
+		}
 		/**
 		 * <summary>Maximum size of the heap (and implementation array)</summary>
 		 * */
@@ -32,7 +48,7 @@ namespace DSProjectUniversal.Util
 		public MaxHeap(int MaxSize)
 		{
 			this.MaxSize = MaxSize;
-			this.HeapArray = new T[this.MaxSize + 1];
+			this._HeapArray = new T[this.MaxSize + 1];
 			this.Size = 0;
 		}
 
@@ -50,12 +66,12 @@ namespace DSProjectUniversal.Util
 			}
 
 			int index = Size + 1;
-			HeapArray[index] = obj;
-			while (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+			_HeapArray[index] = obj;
+			while (HasParent(index) && _HeapArray[index].CompareTo(_HeapArray[index / 2]) > 0)
 			{
-				T temp = HeapArray[index];
-				HeapArray[index] = HeapArray[index / 2];
-				HeapArray[index / 2] = temp;
+				T temp = _HeapArray[index];
+				_HeapArray[index] = _HeapArray[index / 2];
+				_HeapArray[index / 2] = temp;
 				index /= 2;
 			}
 			Size++;
@@ -75,7 +91,7 @@ namespace DSProjectUniversal.Util
 			bool found = false;
 			for (int i = 1; i <= Size; i++)
 			{
-				if (HeapArray[i].Equals(obj))
+				if (_HeapArray[i].Equals(obj))
 				{
 					found = true;
 					index = i;
@@ -84,17 +100,17 @@ namespace DSProjectUniversal.Util
 			}
 			if (!found) return false;
 
-			HeapArray[index] = HeapArray[Size];
-			HeapArray[Size] = default(T);
+			_HeapArray[index] = _HeapArray[Size];
+			_HeapArray[Size] = default(T);
 			Size--;
 
-			if (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+			if (HasParent(index) && _HeapArray[index].CompareTo(_HeapArray[index / 2]) > 0)
 			{
-				while (HasParent(index) && HeapArray[index].CompareTo(HeapArray[index / 2]) > 0)
+				while (HasParent(index) && _HeapArray[index].CompareTo(_HeapArray[index / 2]) > 0)
 				{
-					T temp = HeapArray[index];
-					HeapArray[index] = HeapArray[index / 2];
-					HeapArray[index / 2] = temp;
+					T temp = _HeapArray[index];
+					_HeapArray[index] = _HeapArray[index / 2];
+					_HeapArray[index / 2] = temp;
 					index = index / 2;
 				}
 				return true;
@@ -107,7 +123,7 @@ namespace DSProjectUniversal.Util
 					bool bad = false;
 					if (HasLeftChild(index))
 					{
-						if (HeapArray[index].CompareTo(HeapArray[2 * index]) < 0)
+						if (_HeapArray[index].CompareTo(_HeapArray[2 * index]) < 0)
 						{
 							bad = true;
 						}
@@ -115,7 +131,7 @@ namespace DSProjectUniversal.Util
 					if (HasRightChild(index))
 					{
 						hasRight = true;
-						if (HeapArray[index].CompareTo(HeapArray[2 * index + 1]) < 0)
+						if (_HeapArray[index].CompareTo(_HeapArray[2 * index + 1]) < 0)
 						{
 							bad = true;
 						}
@@ -127,14 +143,14 @@ namespace DSProjectUniversal.Util
 					int maxChild = 2 * index;
 					if (hasRight)
 					{
-						if (HeapArray[2 * index].CompareTo(HeapArray[2 * index + 1]) < 0)
+						if (_HeapArray[2 * index].CompareTo(_HeapArray[2 * index + 1]) < 0)
 						{
 							maxChild = 2 * index + 1;
 						}
 					}
-					T temp = HeapArray[index];
-					HeapArray[index] = HeapArray[maxChild];
-					HeapArray[maxChild] = temp;
+					T temp = _HeapArray[index];
+					_HeapArray[index] = _HeapArray[maxChild];
+					_HeapArray[maxChild] = temp;
 					index = maxChild;
 				}
 			}
@@ -150,7 +166,7 @@ namespace DSProjectUniversal.Util
 		private bool HasParent(int index)
 		{
 			if (index == 1) return false;
-			if (HeapArray[index / 2] == null) return false;
+			if (_HeapArray[index / 2] == null) return false;
 			return true;
 		}
 
@@ -163,7 +179,7 @@ namespace DSProjectUniversal.Util
 		private bool HasLeftChild(int index)
 		{
 			if (index * 2 > Size) return false;
-			if (HeapArray[index * 2] == null) return false;
+			if (_HeapArray[index * 2] == null) return false;
 			return true;
 		}
 
@@ -176,7 +192,7 @@ namespace DSProjectUniversal.Util
 		private bool HasRightChild(int index)
 		{
 			if (index * 2 + 1 > Size) return false;
-			if (HeapArray[index * 2] == null) return false;
+			if (_HeapArray[index * 2] == null) return false;
 			return true;
 		}
 
@@ -187,7 +203,7 @@ namespace DSProjectUniversal.Util
 		 * */
 		public T RemoveFirst()
 		{
-			T result = HeapArray[1];
+			T result = _HeapArray[1];
 			bool remResult = this.Remove(result);
 			if (!remResult) return default(T);
 			return result;
@@ -201,7 +217,7 @@ namespace DSProjectUniversal.Util
 		 * */
 		public bool HasElement(T element)
 		{
-			foreach (var item in HeapArray)
+			foreach (var item in _HeapArray)
 			{
 				if (element.Equals(item))
 				{

@@ -10,11 +10,11 @@
     d:DesignWidth="400">
 
 	<StackPanel x:Name="parentStack" Orientation="Vertical">
-		<Button HorizontalAlignment="Left" Width="{x:Bind parentStack.Width}" VerticalAlignment="Stretch" Click="Button_Click">
-			<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-				<FontIcon x:Name="arrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;"/>
-				<TextBlock Text="{x:Bind _Service.Name}"/>
-			</StackPanel>
+		<Button HorizontalAlignment="Stretch" Width="{x:Bind parentStack.Width}" VerticalAlignment="Stretch" Click="Button_Click" HorizontalContentAlignment="Left" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+			<RelativePanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+				<FontIcon HorizontalAlignment="Left" VerticalAlignment="Stretch" x:Name="arrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
+				<TextBlock HorizontalAlignment="Left" VerticalAlignment="Stretch" Text="{x:Bind _Service.Name}" RelativePanel.RightOf="arrow"/>
+			</RelativePanel>
 		</Button>
 		<local:SubserviceTree x:Name="list" IsOpen="False" ItemSource="{x:Bind _Service.SubServices}"/>
 	</StackPanel>

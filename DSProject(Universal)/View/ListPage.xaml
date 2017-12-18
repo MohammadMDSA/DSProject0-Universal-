@@ -21,6 +21,6 @@
 			<ListBox Style="{StaticResource ListSuperStyle}" VariableSizedWrapGrid.ColumnSpan="1" VariableSizedWrapGrid.RowSpan="2"/>
 			<ListBox Style="{StaticResource ListSuperStyle}" VariableSizedWrapGrid.ColumnSpan="1" VariableSizedWrapGrid.RowSpan="2"/>
 		</VariableSizedWrapGrid>
-		<comp:SubserviceTree  x:Name="tree" Background="Black"/>
+		<comp:SubserviceTree x:Name="tree" Background="Black"/>
 	</StackPanel>
 </Page>

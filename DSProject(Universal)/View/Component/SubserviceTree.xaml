@@ -11,14 +11,14 @@
     d:DesignWidth="400">
 
 	<StackPanel x:Name="stack" VerticalAlignment="Top" Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-		<ListBox x:Name="list" LostFocus="list_LostFocus" Background="White">
-			<ListBox.ItemTemplate>
+		<ItemsControl x:Name="list" Background="White">
+			<ItemsControl.ItemTemplate>
 				<DataTemplate x:DataType="local2:SuperService">
 					<StackPanel Orientation="Vertical">
 						<local:SubserviceTreeItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,0,0,0" Service="{x:Bind}"/>
 					</StackPanel>
 				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
 	</StackPanel>
 </UserControl>
