@@ -62,7 +62,7 @@ namespace DSProjectUniversal
 				Window.Current.Content = rootFrame;
 			}
 
-
+			CompanyViewxaml.Company = new Company();
 
 			Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
 			Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Windows.UI.Core.AppViewBackButtonVisibility.Visible;
